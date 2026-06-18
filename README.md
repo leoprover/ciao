@@ -2,6 +2,9 @@ ciao
 ------
 _*C*omprehension *I*nstance *A*ugment*o*r_
 
+`ciao` may be referenced to as [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20743945.svg)](https://doi.org/10.5281/zenodo.20743945).
+
+
 ## Usage
 
 ```
