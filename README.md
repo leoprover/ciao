@@ -5,6 +5,12 @@ _*C*omprehension *I*nstance *A*ugment*o*r_
 `ciao` may be referenced to as [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20743945.svg)](https://doi.org/10.5281/zenodo.20743945).
 
 
+## Installation
+
+You need to have `sbt` (scala build tool, https://www.scala-sbt.org) installed on your system.
+
+After unpacking the source distribution, simply run `make`. `sbt` will automatically download all dependencies and generate a runnable JAR, located in `./bin`.
+
 ## Usage
 
 ```
