@@ -3,10 +3,10 @@ default: all
 
 all: 
 		@echo Building ciao ...
-		sbt assembly
+		sbt +assembly
 		mkdir bin -p
-		cp ciao/target/scala-2.13/ciao-*.jar bin/.
-		cat ./contrib/exec_dummy bin/ciao-*.jar > bin/ciao
+		cp ciao/target/scala-3.9.0/ciao-app.jar bin/.
+		cat ./contrib/exec_dummy bin/ciao-app.jar > bin/ciao
 		chmod +x bin/ciao
 
 install:
