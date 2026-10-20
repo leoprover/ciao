@@ -2,9 +2,10 @@ package leo.modules.ciao
 
 import leo.datastructures.TPTP
 import leo.datastructures.TPTP.AnnotatedFormula.FormulaType
-import leo.datastructures.TPTP.{TFF, TFFAnnotated}
+import leo.datastructures.TPTP.TFF
 import leo.datastructures.TPTP.{THF, THFAnnotated}
-import leo.modules.tptputils.{SyntaxTransform, TPTPTransformException}
+import leo.modules.tptputils.SyntaxTransform
+import leo.modules.tptputils.SyntaxTransform.TPTPTransformException
 
 import scala.annotation.tailrec
 
@@ -13,7 +14,7 @@ class ProblemAugment(problem: Seq[TPTP.AnnotatedFormula]) {
 
   // todo: proper logging utility
   val logging: Boolean = false
-  def maybePrintln(s: String) = if (logging) println(s)
+  def maybePrintln(s: String): Unit = if (logging) println(s)
 
   /* init */
   // transform to TFF (if it has been FOF)
@@ -272,13 +273,13 @@ class ProblemAugment(problem: Seq[TPTP.AnnotatedFormula]) {
     }
 
     // find those terms that are applications and extract head symbols
-    val relevantFunctions = relevantSubterms.map { term =>
+    val relevantFunctions = relevantSubterms.flatMap { term =>
       term._1 match {
         case TFF.AtomicTerm(f, _) =>
           Some((f, term._2))
         case _ => None
       }
-    }.flatten.map(hd0 => (hd0._1, declaredTypes(hd0._1), hd0._2))
+    }.map(hd0 => (hd0._1, declaredTypes(hd0._1), hd0._2))
 
 
     val additionalNotations = relevantFunctions.map { funHd =>
